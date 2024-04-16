@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "./signup.module.css";
 import { useNavigate,useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 export default function Signup() {
     const navigate = useNavigate();
@@ -22,7 +23,8 @@ export default function Signup() {
         .then((res)=>{
             if(!res.data.flag){
                 if(res.data.User.role==='ShopOwner'){
-                    navigate('/complete-profile',{state:{data:res.data.User._id}});
+                    Cookies.set("UserId",res.data.User._id,{ expires: 2 });
+                    navigate('/complete-profile');
                 }else{
                     navigate('/');
                 }

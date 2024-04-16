@@ -1,14 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookies";
+import { useNavigate } from "react-router-dom";
 export default function Completeprofile(){
-    const location = useLocation();
     const navigate = useNavigate();
-    const data = location.state;
-
+    const data = Cookies.get("UserId");
     const [formData, setFormData] = useState({
         shopName: "",
-        ownerId: data._id,
+        ownerId: data,
         shopNumber: "",
         address: "",
         city: "",
