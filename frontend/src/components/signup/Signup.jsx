@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "./signup.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 export default function Signup() {
@@ -15,17 +16,17 @@ export default function Signup() {
     function handleSubmit(e) {
         e.preventDefault();
         const body = {
-            Name: name,
-            Username: username,
-            Password: password,
-            Email: email,
-            Role: role
-        };
-
-        axios.post("http://localhost:3001/api/v1/user/signup", body)
-        .then((res) => {
-            if (!res.data.flag) {
-                if (res.data.User.role === 'ShopOwner') {
+            Name:name,
+            Username:username,
+            Password:password,
+            Email:email,
+            Role:role
+        }
+        axios.post("http://localhost:3001/api/v1/user/signup",body)
+        .then((res)=>{
+            if(!res.data.flag){
+                if(res.data.User.role==='ShopOwner'){
+                    Cookies.set("UserId",res.data.User._id,{ expires: 2 });
                     navigate('/complete-profile');
                 } else {
                     navigate('/');

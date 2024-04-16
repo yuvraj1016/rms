@@ -36,8 +36,8 @@ router.post("/signup", async (req, res, next) => {
         } else {
             const user = new User(body);
             try {
-                await user.save();
-                res.status(201).json({ message: 'Student Created' });
+                const result = await user.save();
+                res.status(201).json({ message: 'User Created', flag:false, User:result });
             } catch (err) {
                 console.log(err);
                 next(err);
