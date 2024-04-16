@@ -22,7 +22,7 @@ export default function Signup() {
         .then((res)=>{
             if(!res.data.flag){
                 if(res.data.User.role==='ShopOwner'){
-                    navigate('/complete-profile');
+                    navigate('/complete-profile',{state:{data:res.data.User._id}});
                 }else{
                     navigate('/');
                 }

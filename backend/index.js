@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 
 import connectDB from "./models/connectDb.js";
 import userRoutes from "./routes/userRoutes.js";
-
+import shopRoutes from "./routes/shopRoutes.js";
 dotenv.config();
 
 
@@ -17,6 +17,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/api/v1/user",userRoutes)
+app.use("/api/v1/shop",shopRoutes)
 
 const startServer = async () => {
     try {
