@@ -2,7 +2,6 @@ import style from './home.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
-
 export default function Home(){
     const navigate = useNavigate();
     const [uname,setUname] = useState("");
@@ -22,14 +21,20 @@ export default function Home(){
         }).catch((err)=>{console.log(err)});
     }
     return(
-        <div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <input type="text" placeholder='UserName' value={uname} onChange={(e)=>{setUname(e.target.value)}} required />
-                <input type="password" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required />
-                <input type="submit" value="Signin"  />
-            </form>
-            <div>
-                new user ? create a new account <Link to="/Signup">Sign up</Link>
+
+
+        <div className={style.container}>
+            <div className={style.form_container}>
+                <form onSubmit={(e)=>handleSubmit(e)}>
+                    <input type="text" placeholder='UserName' value={uname} onChange={(e)=>{setUname(e.target.value)}} required className={style.input} />
+                    <input type="password" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required className={style.input} />
+                    <input type="submit" value="Signin" className={style.button} />
+                </form>
+                <div className={style.signup}>
+                    
+                    New user? Create a new account <Link to="/Signup">Sign up</Link>
+                    
+                </div>
             </div>
         </div>
     )
