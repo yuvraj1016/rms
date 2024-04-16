@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "./signup.module.css";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
 

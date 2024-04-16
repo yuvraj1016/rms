@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookies";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 export default function Completeprofile(){
     const navigate = useNavigate();
